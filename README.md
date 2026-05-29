@@ -1,11 +1,11 @@
 # Shravya Unukuri — Personal Portfolio
 
-A premium, interactive, and modern portfolio website showcasing full-stack development, cybersecurity research, and technical copywriting work. Built with custom CSS animations, micro-interactions, and a dynamic theme system.
+An interactive and modern portfolio website showcasing full-stack development, cybersecurity research, and technical copywriting work. Built with custom CSS animations, micro-interactions, and a dynamic theme system.
 
 ## 🚀 Live Demo
 
 You can view the live website here:
-**[Live Website Link](https://your-live-link.com)** *(Edit this link to add your live URL!)*
+**[Live Website Link]([https://your-live-link.com](https://shravyaunukuri.github.io/MyPersonalPortfolio/))** 
 
 ---
 
@@ -40,18 +40,3 @@ MyPortfolio/
 └── images/          # Image assets & graphic elements
 ```
 
----
-
-## 💻 Local Setup
-
-Since this is a lightweight, static website, you don't need any complex installation:
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/ShravyaUnukuri/MyPersonalPortfolio.git
-   ```
-2. Open the directory:
-   ```bash
-   cd MyPersonalPortfolio
-   ```
-3. Open `index.html` in your favorite web browser (e.g. double-click the file, or open it via terminal).
