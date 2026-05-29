@@ -4,9 +4,7 @@ An interactive and modern portfolio website showcasing full-stack development, c
 
 ## 🚀 Live Demo
 
-You can view the live website here:
-**[Live Website Link]([https://your-live-link.com](https://shravyaunukuri.github.io/MyPersonalPortfolio/))** 
-
+**[Live Website Link](https://shravyaunukuri.github.io/MyPersonalPortfolio/)** 🚀
 ---
 
 ## ✨ Features
