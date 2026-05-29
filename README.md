@@ -1,57 +1,50 @@
-# Shravya Unukuri — Personal Portfolio
+## Shravya Unukuri — Portfolio
 
-A premium, interactive, and modern portfolio website showcasing full-stack development, cybersecurity research, and technical copywriting work. Built with custom CSS animations, micro-interactions, and a dynamic theme system.
+A personal portfolio showcasing my work in full-stack development, cybersecurity, and technical writing.
 
-## 🚀 Live Demo
+#### Live Site
 
-You can view the live website here:
-**[Live Website Link](https://shravyaunukuri.github.io/MyPersonalPortfolio/)** 🚀
-
----
-
-## ✨ Features
-
-- **Fluid Typography**: Dynamic typography with `'Cormorant Garamond'` and `'Outfit'` that automatically scales to prevent wrapping and looks extremely polished across all viewports.
-- **Swinging Medieval Lamp Theme Toggle**: A custom CSS theme toggle styled as a hanging lantern that gently sways. Pulling the cord triggers a springy physics animation, lighting up a flickering flame and casting a warm ambient glow behind the lamp in dark mode.
-- **Theme-Matched Floating Background Flora**: A lightweight background particle system that spawns floating, rotating blossoms (`✿`, `❀`, `❃`), clovers (`☘`), and pointed leaves (via custom SVG). The flora colors adapt dynamically using CSS variables to match either the light or dark theme.
-- **Custom Cursor & Magnetic Physics**: A smooth custom "bean" cursor with a trailing glow that stretches and scales on interactive elements, combined with magnetic pull effects on buttons and social icons.
-- **Visitor Counter**: Integrates with a Page Visit Counter API to display live visitor statistics dynamically in the navigation bar.
-- **Parallax & 3D Tilt**: Interactive cards (projects, stats, credentials) respond with 3D tilt angles on mouse hover using `vanilla-tilt.js`.
-- **Contact Form**: Interactive, theme-matched contact form layout for quick outreach.
+🔗 **[Live Website Link](https://shravyaunukuri.github.io/MyPersonalPortfolio/)** 🚀
 
 ---
 
-## 🛠️ Tech Stack
+#### About
 
-- **Core**: HTML5, Vanilla JavaScript (ES6)
-- **Styling**: Custom CSS3 variables, `@keyframes` animations, and CSS Grid/Flexbox layouts
-- **Libraries**: [Vanilla-Tilt.js](https://micku7zu.github.io/vanilla-tilt.js/) for smooth card tilt physics
+This portfolio is built with a focus on elegant design, subtle interactions, and a seamless user experience. It highlights selected projects, skills, and professional interests through a clean and responsive interface.
 
----
+#### Tech Stack
 
-## 📁 File Structure
+* HTML5
+* CSS3
+* JavaScript (ES6)
+* Vanilla Tilt.js
+
+#### Features
+
+* Responsive design
+* Light & dark theme
+* Custom animations and micro-interactions
+* Interactive project showcases
+* Contact section
+* Dynamic visual effects
+
+#### Structure
 
 ```text
-MyPortfolio/
-├── index.html       # Main HTML page structure
-├── style.css        # Custom styles, theme variables, and animations
-├── script.js        # Custom cursor, particles, theme toggle, and APIs
-├── README.md        # Project documentation
-└── images/          # Image assets & graphic elements
+MyPersonalPortfolio/
+├── index.html
+├── style.css
+├── script.js
+├── README.md
+└── images/
 ```
 
----
 
-## 💻 Local Setup
+Designed and developed by Shravya Unukuri.
 
-Since this is a lightweight, static website, you don't need any complex installation:
+### License & Usage
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/ShravyaUnukuri/MyPersonalPortfolio.git
-   ```
-2. Open the directory:
-   ```bash
-   cd MyPersonalPortfolio
-   ```
-3. Open `index.html` in your favorite web browser (e.g. double-click the file, or open it via terminal).
+© Shravya Unukuri. All rights reserved.
+
+This repository is provided for viewing purposes only. The source code, design, content, animations, and assets may not be copied, modified, redistributed, or deployed without explicit written permission from the author.
+
