@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shravya Unukuri — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=Outfit:wght@300..700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Animated Background Blobs -->
+  <div class="bg-blur b1"></div>
+  <div class="bg-blur b2"></div>
+  <div class="bg-blur b3"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-bean" id="cursor"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-logo">Shravya Unukuri</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="visitor-counter">
+        <span class="eye-icon">Visitors:</span> <span id="visitCount">--</span>
+      </div>
+    </div>
+    <div class="nav-toggle" id="navToggle">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Theme Toggle Hanging Medieval Lamp -->
+  <div id="themeToggle" class="medieval-lamp-container" role="button" aria-label="Toggle Theme">
+    <div class="lamp-glow-effect"></div>
+    <div class="lamp-bracket"></div>
+    <div class="lamp-chain"></div>
+    <div class="lamp-assembly">
+      <div class="lamp-hook"></div>
+      <div class="lamp-cap"></div>
+      <div class="lamp-glass">
+        <div class="lamp-bar bar-left"></div>
+        <div class="lamp-bar bar-right"></div>
+        <div class="lamp-flame"></div>
+      </div>
+      <div class="lamp-bottom"></div>
+      <div class="lamp-pull-cord">
+        <div class="lamp-pull-ring"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="complex-orb"></div>
+    <div class="hero-bg-circles">
+      <div class="circle c1"></div>
+      <div class="circle c2"></div>
+      <div class="circle c3"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">✦ Final-Year CS Student</p>
+      <h1 class="hero-name">
+        <span class="hero-hi">Hi, I'm <span class="flower" style="color: var(--accent); font-size: 0.9em; margin-left: 4px;">✿</span></span>
+        <span class="hero-name-actual">Shravya Unukuri</span>
+      </h1>
+      <p class="hero-tagline"><span id="typewriter"></span><span class="type-cursor">|</span></p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">View Work</a>
+        <a href="#contact" class="btn-ghost">Get In Touch</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/ShravyaUnukuri" target="_blank" class="hero-social-link" title="GitHub">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/shravyaunukuri/" target="_blank" class="hero-social-link" title="LinkedIn">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+        <a href="mailto:shravyaunukuri0109@gmail.com" class="hero-social-link" title="Email">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+        <a href="tel:+919121862259" class="hero-social-link" title="Phone">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll">scroll ↓</div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-label">◈ About</div>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>Building things that<br /><em>think & connect.</em></h2>
+          <p>Computer Science student (2026) focused on full-stack development and cybersecurity, with experience in
+            MERN stack applications, IoV security research, and technical problem-solving. Passionate about building
+            clean, functional, and thoughtfully designed digital experiences.
+          </p>
+          <p>I also run <strong>shr studio</strong>, a technical copywriting venture where I craft compelling copy for
+            tech-focused brands. I like the intersection of logic and language.</p>
+        </div>
+        <div class="about-cards">
+          <div class="stat-card">
+            <span class="stat-num">3</span>
+            <span class="stat-label">Internships</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">9+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">1</span>
+            <span class="stat-label">Research Paper</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">C1</span>
+            <span class="stat-label">English (British Council)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="section-inner">
+      <div class="section-label">◈ Skills</div>
+      <h2>What I work with</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <div class="skill-header">
+            <h3>Languages</h3>
+            <div class="skill-icon">⌨</div>
+          </div>
+          <div class="skill-tags">
+            <span>Python</span><span>C</span><span>C++</span><span>SQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-header">
+            <h3>Web Development</h3>
+            <div class="skill-icon">⬡</div>
+          </div>
+          <div class="skill-tags">
+            <span>React</span><span>Node.js</span><span>MongoDB</span><span>HTML</span><span>CSS</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-header">
+            <h3>Domains</h3>
+            <div class="skill-icon">◎</div>
+          </div>
+          <div class="skill-tags">
+            <span>DSA</span><span>Cybersecurity</span><span>Quantum Computing</span><span>Federated Learning</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-header">
+            <h3>Communication</h3>
+            <div class="skill-icon">✎</div>
+          </div>
+          <div class="skill-tags">
+            <span>Technical Copywriting</span><span>Content Creation</span><span>Research Writing</span><span>Blogs and
+              Articles</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <div class="section-inner">
+    <div class="section-label">◈ Experience</div>
+      <h2>Where I've worked</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">11/2025 – Present</div>
+          <div class="timeline-card">
+            <div class="tl-role">Founder & Technical Copywriter</div>
+            <div class="tl-company">shr studio</div>
+            <ul>
+              <li>Writing persuasive technical copy for tech-focused brands.</li>
+              <li>Managing studio operations, branding, and communication.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">05/2025 – 07/2025</div>
+          <div class="timeline-card">
+            <div class="tl-role">Cybersecurity Intern</div>
+            <div class="tl-company">Council for Skills and Competencies</div>
+            <ul>
+              <li>Worked on foundational cybersecurity concepts and tools.</li>
+              <li>Hands-on exposure to real-world security techniques.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">05/2025 – 07/2025</div>
+          <div class="timeline-card">
+            <div class="tl-role">MERN Stack Project Dev Intern</div>
+            <div class="tl-company">CCC</div>
+            <ul>
+              <li>Built a MERN-based interactive game platform with smart game logic.</li>
+              <li>Designed a clean client–server structure for scalable full-stack development.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">05/2024 – 07/2024</div>
+          <div class="timeline-card">
+            <div class="tl-role">MERN Stack Development Intern</div>
+            <div class="tl-company">EXCELR</div>
+            <ul>
+              <li>Built a MERN To-Do app with full CRUD functionality.</li>
+              <li>Gained solid full-stack integration experience.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">05/2024 – 07/2024</div>
+          <div class="timeline-card">
+            <div class="tl-role">Content Writer</div>
+            <div class="tl-company">Kshitiksha Foundation (NGO)</div>
+            <ul>
+              <li>Produced written content on social issues for community outreach and fundraising.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Research -->
+  <section id="research">
+    <div class="section-inner">
+    <div class="section-label">◈ Research</div>
+      <h2>Published Work</h2>
+      <div class="research-card">
+        <h3>Secure Collaborative Authentication Framework for Federated Social IoV Systems</h3>
+        <div class="research-badge">Co-authored · 10/2025 – Present</div>
+        <p>Proposes a post-quantum cryptography and federated learning-based authentication protocol for connected
+          vehicle networks (SIoV). Addresses key vulnerabilities including replay attacks, impersonation, and
+          man-in-the-middle threats.</p>
+        <div class="research-tags">
+          <span>Post-Quantum Cryptography</span>
+          <span>Federated Learning</span>
+          <span>SIoV</span>
+          <span>Zero-Trust Architecture</span>
+        </div>
+      </div>
+
+      <div class="research-card academic">
+        <h3>Patient-Held Smartcard with Unique Identifier & mHealth Integration</h3>
+        <div class="research-badge">Academic Project · 08/2025 – 04/2026</div>
+        <p>A system for emergency medical history access using a smartcard linked with a unique identifier and mobile
+          health integration, enabling rapid access to patient records during emergencies.</p>
+        <div class="research-tags">
+          <span>mHealth</span>
+          <span>Smartcard Systems</span>
+          <span>Emergency Medical History Access</span>
+          <span>Quick Response (QR) Code</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="section-inner">
+    <div class="section-label">◈ Projects</div>
+      <h2>Things I've built</h2>
+      <div class="projects-grid">
+
+        <div class="project-card featured">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="project-info">
+                <h3>Split Pay</h3>
+                <div class="project-stack"><span>MERN</span><span>Finance Logic</span></div>
+              </div>
+            </div>
+            <div class="flip-back">
+              <div class="project-info">
+                <p>Revenue-splitting system to automate fund distribution for collaborative projects with
+                  percentage-based
+                  account transactions.</p>
+                <div class="project-links">
+                  <a href="#" target="_blank" class="proj-link" data-id="splitpay">⟶ View Project</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="project-info">
+                <h3>AI Calorie Estimator</h3>
+                <div class="project-stack"><span>Gemini API</span><span>Python</span><span>Streamlit</span></div>
+              </div>
+            </div>
+            <div class="flip-back">
+              <div class="project-info">
+                <p>Image-based food calorie calculator using the Gemini API with nutritional result display via a
+                  user-friendly interface.</p>
+                <div class="project-links">
+                  <a href="https://github.com/ShravyaUnukuri/Food-Calorie-Estimator" target="_blank" class="proj-link"
+                    data-id="calorie">⟶
+                    View Project</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="project-info">
+                <h3>DoPlay</h3>
+                <div class="project-stack"><span>JavaScript</span><span>UX Design</span><span>UI Design</span><span>Game
+                    Design</span><span>Game Development</span></div>
+              </div>
+            </div>
+            <div class="flip-back">
+              <div class="project-info">
+                <p>Gamified task management app that transforms to-do lists into interactive challenges, enhancing user
+                  engagement.</p>
+                <div class="project-links">
+                  <a href="https://github.com/ShravyaUnukuri/DoPlay" target="_blank" class="proj-link"
+                    data-id="doplay">⟶
+                    View Project</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="project-info">
+                <h3>Sopera Florals</h3>
+                <div class="project-stack"><span>HTML/CSS</span><span>JS</span><span>React</span><span>UI
+                    Design</span><span>UX Design</span><span>Web Development</span></div>
+              </div>
+            </div>
+            <div class="flip-back">
+              <div class="project-info">
+                <p>Personalized flower recommendation website with real-time availability for informed ordering
+                  decisions.
+                  (Team project)</p>
+                <div class="project-links">
+                  <a href="https://github.com/ShravyaUnukuri/Sopera-Florals" target="_blank" class="proj-link"
+                    data-id="sopera">⟶ View
+                    Project</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="project-info">
+                <h3>Basic To-Do List (MERN)</h3>
+                <div class="project-stack">
+                  <span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span>
+                </div>
+              </div>
+            </div>
+            <div class="flip-back">
+              <div class="project-info">
+                <p>Full-stack MERN To-Do app with CRUD functionality, RESTful APIs, and database management.</p>
+                <div class="project-links">
+                  <a href="https://github.com/ShravyaUnukuri/To-Do-List-Application" target="_blank" class="proj-link"
+                    data-id="todo">⟶ View
+                    Project</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="project-info">
+                <h3>Tip Calculator</h3>
+                <div class="project-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+              </div>
+            </div>
+            <div class="flip-back">
+              <div class="project-info">
+                <p>Responsive Tip Calculator using HTML, CSS, and JavaScript to calculate tips and split bills
+                  dynamically.
+                </p>
+                <div class="project-links">
+                  <a href="https://github.com/ShravyaUnukuri/Tip_calculator" target="_blank" class="proj-link"
+                    data-id="tip">⟶ View
+                    Project</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="project-info">
+                <h3>Personal Portfolio</h3>
+                <div class="project-stack"><span>HTML</span><span>CSS</span></div>
+              </div>
+            </div>
+            <div class="flip-back">
+              <div class="project-info">
+                <p>Responsive personal portfolio website built with HTML and CSS showcasing professional work.</p>
+                <div class="project-links">
+                  <a href="https://github.com/ShravyaUnukuri/Portfolio" target="_blank" class="proj-link"
+                    data-id="portfolio">⟶ View
+                    Project</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="project-info">
+                <h3>YouTube Clone</h3>
+                <div class="project-stack"><span>HTML</span><span>CSS</span></div>
+              </div>
+            </div>
+            <div class="flip-back">
+              <div class="project-info">
+                <p>Basic YouTube clone built with HTML and CSS, focusing on UI structure, layout, and styling
+                  techniques.
+                </p>
+                <div class="project-links">
+                  <a href="https://github.com/ShravyaUnukuri/YouTube-Clone" target="_blank" class="proj-link"
+                    data-id="yt">⟶
+                    View
+                    Project</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <p class="projects-note">⟡ More projects coming soon — click on “View Project” to explore available work.</p>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications">
+    <div class="section-inner">
+      <div class="section-label">◈ Certifications</div>
+      <h2>Credentials</h2>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-org">Cisco Network Academy</div>
+          <div class="cert-name">Cybersecurity Essentials</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-org">Cisco Network Academy</div>
+          <div class="cert-name">Threat Management</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-org">NPTEL</div>
+          <div class="cert-name">Ethical Hacking</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-org">NPTEL</div>
+          <div class="cert-name">Deep Learning</div>
+        </div>
+        <div class="cert-card highlight">
+          <div class="cert-org">Aptis ESOL · British Council</div>
+          <div class="cert-name">C1 Advanced English Proficiency</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-org">NYIF · edX</div>
+          <div class="cert-name">Introduction to Stock Trading</div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-org">CCC Digital India</div>
+          <div class="cert-name">MERN Stack Project Development</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="section-inner contact-inner">
+      <div class="section-label">◈ Contact</div>
+
+      <div class="contact-container">
+        <div class="contact-left">
+          <h2>Let's connect</h2>
+          <p class="contact-sub">Open to full-time roles, collaborations, or just a good conversation about tech.</p>
+          <form class="contact-form" onsubmit="event.preventDefault();">
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <textarea placeholder="Your Message" rows="4" required></textarea>
+            <button type="submit" class="btn-primary">Send Message</button>
+          </form>
+        </div>
+
+        <div class="contact-right">
+          <div class="contact-links">
+            <a href="mailto:shravyaunukuri0109@gmail.com" class="contact-item">
+              <span class="contact-icon">✉</span>
+              <span>shravyaunukuri0109@gmail.com</span>
+            </a>
+            <a href="https://www.linkedin.com/in/shravyaunukuri/" target="_blank" class="contact-item">
+              <span class="contact-icon">⬡</span>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/ShravyaUnukuri" target="_blank" class="contact-item">
+              <span class="contact-icon">◎</span>
+              <span>GitHub</span>
+            </a>
+            <a href="tel:+919121862259" class="contact-item">
+              <span class="contact-icon">◷</span>
+              <span>+91 9121862259</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Designed & built by Unukuri Shravya · 2026 ✦</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
