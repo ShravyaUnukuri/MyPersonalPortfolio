@@ -5,7 +5,7 @@ A premium, interactive, and modern portfolio website showcasing full-stack devel
 ## 🚀 Live Demo
 
 You can view the live website here:
-**[Live Website Link](https://your-live-link.com)** *(Edit this link to add your live URL!)*
+**[Live Website Link](https://shravyaunukuri.github.io/MyPersonalPortfolio/)** 🚀
 
 ---
 
