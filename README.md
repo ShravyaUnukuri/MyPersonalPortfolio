@@ -8,18 +8,18 @@ A personal portfolio showcasing my work in full-stack development, cybersecurity
 
 ---
 
-### About
+#### About
 
 This portfolio is built with a focus on elegant design, subtle interactions, and a seamless user experience. It highlights selected projects, skills, and professional interests through a clean and responsive interface.
 
-## Tech Stack
+#### Tech Stack
 
 * HTML5
 * CSS3
 * JavaScript (ES6)
 * Vanilla Tilt.js
 
-### Features
+#### Features
 
 * Responsive design
 * Light & dark theme
@@ -28,7 +28,7 @@ This portfolio is built with a focus on elegant design, subtle interactions, and
 * Contact section
 * Dynamic visual effects
 
-### Structure
+#### Structure
 
 ```text
 MyPersonalPortfolio/
@@ -42,7 +42,7 @@ MyPersonalPortfolio/
 
 Designed and developed by Shravya Unukuri.
 
-## License & Usage
+### License & Usage
 
 © Shravya Unukuri. All rights reserved.
 
