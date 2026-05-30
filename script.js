@@ -279,127 +279,119 @@ if (isTouchDevice) {
 function createFloatingFlora() {
   const container = document.createElement('div');
   container.className = 'floating-flora-container';
-  container.style.position = 'fixed';
-  container.style.top = '0';
-  container.style.left = '0';
-  container.style.width = '100vw';
-  container.style.height = '100vh';
-  container.style.pointerEvents = 'none';
-  container.style.zIndex = '1'; // just above background blobs, behind cards
-  container.style.overflow = 'hidden';
+  Object.assign(container.style, {
+    position: 'fixed', top: '0', left: '0',
+    width: '100vw', height: '100vh',
+    pointerEvents: 'none', zIndex: '1', overflow: 'hidden'
+  });
   document.body.appendChild(container);
 
-  const leavesAndFlowers = [
-    { type: 'text', content: '✿', color: 'var(--flora-1)' },       // Flower (Rose)
-    { type: 'text', content: '✿', color: 'var(--flora-2)' },       // Flower (Lavender)
-    { type: 'text', content: '✿', color: 'var(--flora-3)' },       // Flower (Plum)
-    { 
-      type: 'svg', 
-      content: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17,2C14,2 10.3,3.7 7.7,6.3C4,10 3,15.5 3,20C3,20.5 3.5,21 4,21C8.5,21 14,20 17.7,16.3C20.3,13.7 22,10 22,7C22,2 17,2 17,2Z"/></svg>', 
-      color: 'var(--flora-4)' 
-    }, // Leaf (Forest green)
-    { 
-      type: 'svg', 
-      content: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17,2C14,2 10.3,3.7 7.7,6.3C4,10 3,15.5 3,20C3,20.5 3.5,21 4,21C8.5,21 14,20 17.7,16.3C20.3,13.7 22,10 22,7C22,2 17,2 17,2Z"/></svg>', 
-      color: 'var(--flora-5)' 
-    }  // Leaf (Olive green)
+  // Cute, varied flora — flowers, petals, leaves, stars, hearts
+  const flora = [
+    { glyph: '✿',  color: 'var(--flora-1)' }, // dusty rose flower
+    { glyph: '✿',  color: 'var(--flora-3)' }, // outlined flower
+    { glyph: '⁕',  color: 'var(--flora-2)' }, // five-petal star
+    { glyph: '🌸', color: null },              // cherry blossom emoji
+    { glyph: '·',  color: 'var(--flora-1)' }, // tiny dot petal
   ];
 
-  const maxParticles = 12;
+  const maxParticles = 14;
   let activeParticles = 0;
 
-  function spawnParticle() {
-    if (activeParticles >= maxParticles) return;
-    
-    activeParticles++;
-    const item = leavesAndFlowers[Math.floor(Math.random() * leavesAndFlowers.length)];
-    const particle = document.createElement('div');
-    
-    particle.style.position = 'absolute';
-    particle.style.pointerEvents = 'none';
-    
-    if (item.type === 'text') {
-      particle.textContent = item.content;
-    } else {
-      particle.innerHTML = item.content;
-      const svg = particle.querySelector('svg');
-      if (svg) {
-        svg.style.width = '100%';
-        svg.style.height = '100%';
-        svg.style.display = 'block';
-      }
-    }
-    
-    // Randomize initial properties
-    const startX = Math.random() * window.innerWidth;
-    const startY = -60;
-    const size = Math.random() * 20 + 30; // 30px to 50px
-    const opacity = Math.random() * 0.12 + 0.12; // 0.12 to 0.24 opacity
-    const duration = Math.random() * 14000 + 14000; // 14s to 28s for slow gentle float
-    const swingSpeed = Math.random() * 3000 + 2000; // speed of sway
-    const swingRange = Math.random() * 50 + 25; // 25px to 75px sway range
-    const rotationSpeed = Math.random() * 360 - 180; // random rotation degree
-    
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    particle.style.display = 'flex';
-    particle.style.alignItems = 'center';
-    particle.style.justifyContent = 'center';
-    
-    particle.style.left = `${startX}px`;
-    particle.style.top = `${startY}px`;
-    particle.style.fontSize = `${size}px`;
-    particle.style.opacity = opacity;
-    particle.style.color = item.color;
-    particle.style.transform = `rotate(0deg)`;
-    particle.style.transition = `transform ${duration}ms linear, top ${duration}ms linear, left ${duration}ms linear`;
-    
-    container.appendChild(particle);
+  // Smooth easing for the opacity envelope:
+  // fade in over first 12%, hold, fade out over last 22%
+  function opacityAt(t, peak) {
+    const fadeIn  = 0.12;
+    const fadeOut = 0.22;
+    if (t < fadeIn)            return peak * (t / fadeIn);
+    if (t > 1 - fadeOut)       return peak * ((1 - t) / fadeOut);
+    return peak;
+  }
 
-    // Force style recalculation for transitions
-    particle.getBoundingClientRect();
-    
-    // Animate using JS interval + transition or requestAnimationFrame for smooth drift
-    const startTime = Date.now();
-    
-    function animate() {
-      const elapsed = Date.now() - startTime;
-      const progress = elapsed / duration;
-      
-      if (progress >= 1) {
-        particle.remove();
+  function spawnParticle(preplacedY) {
+    if (activeParticles >= maxParticles) return;
+    activeParticles++;
+
+    const item    = flora[Math.floor(Math.random() * flora.length)];
+    const size    = Math.random() * 16 + 22;          // 22 – 38 px
+    const peakOp  = Math.random() * 0.13 + 0.13;      // 0.13 – 0.26
+    const dur     = Math.random() * 12000 + 16000;     // 16 – 28 s
+    const swingSpd = Math.random() * 2800 + 1800;      // sway period
+    const swingAmp = Math.random() * 45 + 20;          // 20 – 65 px sway
+    const windDrift = (Math.random() - 0.4) * 60;     // slight random wind
+    const spinTotal = Math.random() * 280 - 140;       // –140° to +140°
+    const startX  = Math.random() * window.innerWidth;
+    const startY  = preplacedY !== undefined ? preplacedY : -size - 10;
+
+    const el = document.createElement('div');
+    Object.assign(el.style, {
+      position:       'absolute',
+      pointerEvents:  'none',
+      width:          `${size}px`,
+      height:         `${size}px`,
+      display:        'flex',
+      alignItems:     'center',
+      justifyContent: 'center',
+      fontSize:       `${size}px`,
+      lineHeight:     '1',
+      left:           `${startX}px`,
+      top:            `${startY}px`,
+      opacity:        '0',
+      willChange:     'transform, opacity, top, left',
+    });
+    el.textContent = item.glyph;
+    if (item.color) el.style.color = item.color;
+
+    container.appendChild(el);
+
+    const startTime = performance.now();
+
+    function animate(now) {
+      const elapsed  = now - startTime;
+      const t        = Math.min(elapsed / dur, 1);
+
+      // position
+      const y    = startY + (window.innerHeight + size + 60) * t;
+      const sway = Math.sin((elapsed / swingSpd) * Math.PI * 2) * swingAmp;
+      const x    = startX + sway + windDrift * t;
+
+      // opacity envelope — gentle fade in, long hold, soft fade out
+      const op = opacityAt(t, peakOp);
+
+      // tiny scale breathe — grows slightly in mid-flight, shrinks at end
+      const scale = 0.85 + 0.2 * Math.sin(t * Math.PI);
+
+      el.style.top       = `${y}px`;
+      el.style.left      = `${x}px`;
+      el.style.opacity   = op;
+      el.style.transform = `rotate(${t * spinTotal}deg) scale(${scale})`;
+
+      if (t < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        // opacity is already 0 at t=1 — remove silently
+        el.remove();
         activeParticles--;
-        return;
       }
-      
-      // Calculate new position
-      const currentY = startY + (window.innerHeight + 80) * progress;
-      const sway = Math.sin((elapsed / swingSpeed) * Math.PI) * swingRange;
-      const currentX = startX + sway - (progress * 50); // slight leftwards wind drift
-      
-      particle.style.top = `${currentY}px`;
-      particle.style.left = `${currentX}px`;
-      particle.style.transform = `rotate(${progress * rotationSpeed}deg)`;
-      
-      requestAnimationFrame(animate);
     }
-    
+
     requestAnimationFrame(animate);
   }
 
-  // Initial particles spread across height
-  for (let i = 0; i < 6; i++) {
+  // Seed initial particles scattered across the full viewport height
+  // so the screen isn't empty on load
+  for (let i = 0; i < 8; i++) {
     setTimeout(() => {
-      spawnParticle();
-      const lastChild = container.lastChild;
-      if (lastChild) {
-        lastChild.style.top = `${Math.random() * window.innerHeight}px`;
+      if (activeParticles < maxParticles) {
+        const el = container; // dummy check — spawnParticle handles it
+        const preY = Math.random() * window.innerHeight;
+        spawnParticle(preY);
       }
-    }, i * 1500);
+    }, i * 600);
   }
 
-  // Spawning interval
-  setInterval(spawnParticle, 1800);
+  // Keep a gentle stream going
+  setInterval(() => spawnParticle(), 2200);
 }
 
 document.addEventListener('DOMContentLoaded', createFloatingFlora);
