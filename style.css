@@ -202,8 +202,8 @@ img {
 .medieval-lamp-container {
   position: fixed;
   top: 0;
-  right: 24px; /* Realigned to the far right to prevent overlapping the visitor counter */
-  z-index: 200;
+  right: 80px;
+  z-index: 50;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1631,40 +1631,33 @@ footer {
     display: none;
   }
 
-  /* Lamp: shrink it and drop its z-index BELOW the navbar so the
-     hamburger icon is always fully visible and tappable */
+  /* Lamp — compact, non-overlapping on mobile */
   .medieval-lamp-container {
-    right: 8px;
-    z-index: 90; /* below navbar (100) — lamp hangs behind the nav bar visually */
+    right: 10px;
+    animation: none; /* no swing on mobile */
   }
   .medieval-lamp-container .lamp-chain {
-    height: 24px; /* very short — lamp body sits just below navbar */
+    height: 20px;
   }
   .medieval-lamp-container .lamp-assembly {
-    transform: scale(0.52);
+    transform: scale(0.48);
     transform-origin: top center;
   }
   .lamp-glow-effect {
-    top: 50px;
-    width: 80px;
-    height: 80px;
-  }
-  /* Stop the lamp swing animation on mobile to avoid covering the hamburger */
-  .medieval-lamp-container {
-    animation: none;
+    top: 44px;
+    width: 70px;
+    height: 70px;
   }
 
-  /* Give the navbar enough right padding so logo + hamburger don't crowd */
+  /* Navbar — clear padding, hamburger always on top */
   #navbar {
-    padding: 0 18px 0 18px;
+    padding: 0 18px;
   }
-  /* Push hamburger away from the right edge where lamp hangs */
   .nav-toggle {
     display: flex;
     flex-shrink: 0;
-    margin-right: 2px; /* small buffer; lamp is behind navbar anyway */
     position: relative;
-    z-index: 101; /* above navbar layer to stay always tappable */
+    z-index: 101;
   }
 
   /* Nav dropdown */
