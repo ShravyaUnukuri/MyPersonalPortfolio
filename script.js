@@ -35,25 +35,31 @@ if (themeToggleBtn) {
 
 // Visitor Counter
 const visitCountEl = document.getElementById('visitCount');
-if (visitCountEl) {
+const visitCountMobileEl = document.getElementById('visitCountMobile');
+function setVisitCount(val) {
+  if (visitCountEl) visitCountEl.textContent = val;
+  if (visitCountMobileEl) visitCountMobileEl.textContent = val;
+}
+if (visitCountEl || visitCountMobileEl) {
   fetch('https://api.counterapi.dev/v1/shravyaportfolio/pagevisits/up')
     .then(res => res.json())
     .then(data => {
-      visitCountEl.textContent = data.count;
+      setVisitCount(data.count);
     })
     .catch(err => {
       console.error('Counter API error:', err);
-      // Fallback pseudo-counter if API fails
       let fallback = parseInt(localStorage.getItem('fallbackCount') || '142');
       fallback++;
       localStorage.setItem('fallbackCount', fallback);
-      visitCountEl.textContent = fallback;
+      setVisitCount(fallback);
     });
 }
 
 /* ===========================
    CUSTOM CURSOR — BEAN
+   (desktop/mouse only)
 =========================== */
+const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 const bean = document.getElementById('cursor');
 const glow = document.getElementById('cursorGlow');
 
@@ -61,58 +67,61 @@ let mouseX = 0, mouseY = 0;
 let glowX = 0, glowY = 0;
 let isMagnetic = false;
 
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  if (!isMagnetic) {
-    bean.style.left = mouseX + 'px';
-    bean.style.top = mouseY + 'px';
+if (!isTouchDevice) {
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!isMagnetic) {
+      bean.style.left = mouseX + 'px';
+      bean.style.top = mouseY + 'px';
+    }
+  });
+
+  // Magnetic Buttons
+  document.querySelectorAll('.btn-primary, .btn-ghost, .hero-social-link').forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      isMagnetic = true;
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      bean.style.left = (rect.left + rect.width / 2) + 'px';
+      bean.style.top = (rect.top + rect.height / 2) + 'px';
+    });
+
+    el.addEventListener('mouseleave', () => {
+      isMagnetic = false;
+      el.style.transform = 'translate(0px, 0px)';
+    });
+  });
+
+  // Smooth glow follow
+  function animateGlow() {
+    glowX += (mouseX - glowX) * 0.08;
+    glowY += (mouseY - glowY) * 0.08;
+    glow.style.left = glowX + 'px';
+    glow.style.top = glowY + 'px';
+    requestAnimationFrame(animateGlow);
   }
-});
+  animateGlow();
 
-// Magnetic Buttons
-document.querySelectorAll('.btn-primary, .btn-ghost, .hero-social-link').forEach(el => {
-  el.addEventListener('mousemove', (e) => {
-    isMagnetic = true;
-    const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    
-    el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-    bean.style.left = (rect.left + rect.width / 2) + 'px';
-    bean.style.top = (rect.top + rect.height / 2) + 'px';
+  // Bean reacts to hover
+  document.querySelectorAll('a, button, .project-card, .cert-card, .stat-card, .skill-group, .contact-item').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      bean.style.transform = 'translate(-50%, -50%) rotate(-15deg) scale(1.6)';
+      bean.style.background = '#b56a52';
+      glow.style.width = '70px';
+      glow.style.height = '70px';
+    });
+    el.addEventListener('mouseleave', () => {
+      bean.style.transform = 'translate(-50%, -50%) rotate(-15deg) scale(1)';
+      bean.style.background = 'var(--accent)';
+      glow.style.width = '48px';
+      glow.style.height = '48px';
+    });
   });
-
-  el.addEventListener('mouseleave', () => {
-    isMagnetic = false;
-    el.style.transform = 'translate(0px, 0px)';
-  });
-});
-// Smooth glow follow
-function animateGlow() {
-  glowX += (mouseX - glowX) * 0.08;
-  glowY += (mouseY - glowY) * 0.08;
-  glow.style.left = glowX + 'px';
-  glow.style.top = glowY + 'px';
-  requestAnimationFrame(animateGlow);
 }
-animateGlow();
-
-// Bean reacts to hover
-document.querySelectorAll('a, button, .project-card, .cert-card, .stat-card, .skill-group, .contact-item').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    bean.style.transform = 'translate(-50%, -50%) rotate(-15deg) scale(1.6)';
-    bean.style.background = '#b56a52';
-    glow.style.width = '70px';
-    glow.style.height = '70px';
-  });
-  el.addEventListener('mouseleave', () => {
-    bean.style.transform = 'translate(-50%, -50%) rotate(-15deg) scale(1)';
-    bean.style.background = 'var(--accent)';
-    glow.style.width = '48px';
-    glow.style.height = '48px';
-  });
-});
 
 /* ===========================
    NAVBAR SCROLL EFFECT
@@ -232,13 +241,33 @@ document.addEventListener('DOMContentLoaded', typeWriter);
 /* ===========================
    3D TILT EFFECT
 =========================== */
-if (typeof VanillaTilt !== 'undefined') {
+if (typeof VanillaTilt !== 'undefined' && !isTouchDevice) {
   VanillaTilt.init(document.querySelectorAll(".stat-card, .cert-card"), {
     max: 8,
     speed: 400,
     glare: true,
     "max-glare": 0.15,
     scale: 1.02
+  });
+}
+
+/* ===========================
+   TAP-TO-FLIP (touch devices)
+   Replaces CSS :hover flip
+=========================== */
+if (isTouchDevice) {
+  document.querySelectorAll('.project-card').forEach(card => {
+    // Add a subtle hint label on the front
+    const hint = document.createElement('p');
+    hint.className = 'flip-hint';
+    hint.textContent = 'Tap to flip ↩';
+    hint.style.cssText = 'font-size:0.68rem;color:var(--text-muted);letter-spacing:0.08em;margin-top:10px;opacity:0.7;';
+    const front = card.querySelector('.flip-front');
+    if (front) front.appendChild(hint);
+
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
   });
 }
 
