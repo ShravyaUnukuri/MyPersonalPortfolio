@@ -201,15 +201,15 @@ img {
  =========================== */
 .medieval-lamp-container {
   position: fixed;
-  top: 0;
-  right: 80px;
-  z-index: 50;
+  top: var(--nav-h);          /* hangs from the bottom edge of the navbar */
+  right: 32px;
+  z-index: 49;                /* below navbar (100) — never covers nav */
   display: flex;
   flex-direction: column;
   align-items: center;
   pointer-events: none;
   transform-origin: top center;
-  animation: lampSwing 5s ease-in-out infinite alternate;
+  animation: lampSwing 6s ease-in-out infinite alternate;
 }
 
 .lamp-bracket {
@@ -223,14 +223,14 @@ img {
 }
 
 .lamp-chain {
-  width: 4px;
-  height: 70px; /* Shortened to sit aesthetically above page content */
+  width: 3px;
+  height: 28px;
   background: repeating-linear-gradient(
     to bottom,
     #5c4a3c 0px,
-    #5c4a3c 5px,
-    transparent 5px,
-    transparent 10px
+    #5c4a3c 4px,
+    transparent 4px,
+    transparent 8px
   );
   position: relative;
 }
@@ -253,10 +253,12 @@ img {
   pointer-events: auto;
   position: relative;
   transform-origin: top center;
+  transform: scale(0.62);   /* cute & small — not tiny */
 }
 
 .lamp-assembly.pulled {
   animation: lampPull 0.8s cubic-bezier(0.25, 1.5, 0.5, 1.2) forwards;
+  transform-origin: top center;
 }
 
 .lamp-hook {
@@ -272,9 +274,9 @@ img {
 
 .lamp-glow-effect {
   position: absolute;
-  top: 80px; /* Adjusted offset to match the shorter chain */
-  width: 150px;
-  height: 150px;
+  top: 52px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 160, 40, 0.45) 0%, rgba(255, 120, 0, 0.15) 50%, transparent 70%);
   filter: blur(15px);
@@ -353,7 +355,7 @@ img {
 .lamp-flame {
   width: 10px;
   height: 16px;
-  background: linear-gradient(to top, #ff3700, #ffae00, #ffea00);
+  background: linear-gradient(to top, #ff3700, #ffae00, #fff36a);
   border-radius: 50% 50% 20% 20%;
   filter: blur(0.5px);
   position: absolute;
@@ -1603,13 +1605,7 @@ footer {
   }
 
   .medieval-lamp-container {
-    right: 12px;
-  }
-  .medieval-lamp-container .lamp-assembly {
-    transform: scale(0.75);
-  }
-  .medieval-lamp-container .lamp-chain {
-    height: 50px;
+    right: 20px;
   }
 }
 
@@ -1631,25 +1627,24 @@ footer {
     display: none;
   }
 
-  /* Lamp — compact, non-overlapping on mobile */
+  /* Lamp — hangs from navbar bottom, scaled cute on mobile */
   .medieval-lamp-container {
-    right: 10px;
-    animation: none; /* no swing on mobile */
-  }
-  .medieval-lamp-container .lamp-chain {
-    height: 20px;
+    right: 14px;
+    animation: lampSwing 6s ease-in-out infinite alternate;
   }
   .medieval-lamp-container .lamp-assembly {
-    transform: scale(0.48);
-    transform-origin: top center;
+    transform: scale(0.52);
+  }
+  .medieval-lamp-container .lamp-chain {
+    height: 22px;
   }
   .lamp-glow-effect {
     top: 44px;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
   }
 
-  /* Navbar — clear padding, hamburger always on top */
+  /* Navbar */
   #navbar {
     padding: 0 18px;
   }
